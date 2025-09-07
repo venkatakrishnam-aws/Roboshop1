@@ -27,10 +27,8 @@ else
 fi
 
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
-validate "Copying MongoDB repo file" "$logfile"
+cp Mongo.repo /etc/yum.repos.d/mongo.repo &>> $logfile
+validate $? Copying MongoDB repo file" 
 
-yum install -y mongodb-org
-validate "Installing MongoDB" "$logfile"
 
 
