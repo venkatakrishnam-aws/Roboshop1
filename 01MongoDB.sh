@@ -26,9 +26,8 @@ else
     echo "User is root. Proceeding..." | tee -a "$logfile"
 fi
 
-
 cp Mongo.repo /etc/yum.repos.d/mongo.repo &>> $logfile
-validate $? Copying MongoDB repo file" 
+validate $? "Copying MongoDB repo file" 
 
 
 
