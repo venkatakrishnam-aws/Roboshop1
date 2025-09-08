@@ -27,22 +27,22 @@ else
 fi
 
 cp Mongo.repo /etc/yum.repos.d/mongo.repo &>> $logfile
-validate $? "Copying MongoDB repo file" 
+validate $1 "Copying MongoDB repo file" 
 
 dnf install mongodb-org -y &>> $logfile
-validate $? "Installing MongoDB"
+validate $1 "Installing MongoDB"
 
 systemctl enable mongod &>> $logfile
-validate $? "Enabling MongoDB service"
+validate $1 "Enabling MongoDB service"
 
 systemctl start mongod &>> $logfile
-validate $? "Starting MongoDB service"
+validate $1 "Starting MongoDB service"
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>> $logfile
-validate $? "Modifying MongoDB bindIp"
+validate $1 "Modifying MongoDB bindIp"
 
 systemctl restart mongod &>> $logfile
-validate $? "Restarting MongoDB service"
+validate $1 "Restarting MongoDB service"
 
 
 
