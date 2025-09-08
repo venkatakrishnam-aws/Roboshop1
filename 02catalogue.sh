@@ -1,10 +1,11 @@
 #!/bin/bash
 
 id=$(id -u)
-R = '\e[31m'
-G = '\e[32m'
-Y = '\e[33m'
-N = '\e[0m'
+
+r='\e[31m'
+g='\e[32m'
+G='\e[32m'
+n='\e[0m'
 
 timestamp=$(date +%Y%m%d_%H%M%S)
 logfile="catalogue_backup_$timestamp.log"
