@@ -1,13 +1,17 @@
 #!/bin/bash
 
 id=$(id -u)
+R = '\e[31m'
+G = '\e[32m'
+Y = '\e[33m'
+N = '\e[0m'
 
 timestamp=$(date +%Y%m%d_%H%M%S)
 logfile="catalogue_backup_$timestamp.log"
 echo "Starting Catalogue setup at $(date)" | tee -a "$logfile"
 
 validate() {
-    if [ $? -ne 0 ]; then
+    if [ $1 -ne 0 ]; then
         echo -e "Error: $2 ... $R Failed cant proceed"
         exit 1                               
     else
