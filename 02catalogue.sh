@@ -10,6 +10,7 @@ n='\e[0m'
 timestamp=$(date +%Y%m%d_%H%M%S)
 logfile="catalogue_backup_$timestamp.log"
 echo "Starting Catalogue setup at $(date)" | tee -a "$logfile"
+$mongodb_host=mongodb.vk98.space
 
 validate() {
     if [ $1 -ne 0 ]; then
@@ -76,7 +77,7 @@ validate $1 "Copying MongoDB repo file" &>> $logfile
 dnf install mongodb-org-shell -y &>> $logfile
 validate $1 "Installing MongoDB client" &>> $logfile
 
-mongo --host mongodb.vk98.space </app/schema/catalogue.js &>> $logfile
+mongo --host $mongodb_host </app/schema/catalogue.js &>> $logfile
 validate $1 "Loading catalogue schema" &>> $logfile
 
 echo -e "\e[32mCatalogue schema loaded successfully at $(date) \e[0m" | tee -a "$logfile"
