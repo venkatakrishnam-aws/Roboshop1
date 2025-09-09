@@ -1,6 +1,7 @@
 #!/bin/bash
 
 id=$(id -u)
+$mongodb_host=mongodb.vk98.space
 
 r='\e[31m'
 g='\e[32m'
@@ -10,7 +11,7 @@ n='\e[0m'
 timestamp=$(date +%Y%m%d_%H%M%S)
 logfile="catalogue_backup_$timestamp.log"
 echo "Starting Catalogue setup at $(date)" | tee -a "$logfile"
-$mongodb_host=mongodb.vk98.space
+
 
 validate() {
     if [ $1 -ne 0 ]; then
